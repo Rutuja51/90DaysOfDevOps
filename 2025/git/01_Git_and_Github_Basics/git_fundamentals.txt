@@ -1,17 +1,18 @@
-# Git Fundamentals
+#Git Fundamentals
 
-# What is Git ?
-Ans => 
+#What is Git ?
+Ans. => 
 - Git is a version control system (VCS).
 - It helps developers track changes in code, work together on projects, and manage versions of their      software.
 
-# Why is Git important?
-Ans.=>
+#Why is Git important?
+Ans. =>
 - It lets teams collaborate easily on the same code.
 - You can go back to older versions if something breaks.
 - It helps in avoiding code conflicts when many people are working on the same files.
 
-# Why is Git so popular?
+#Why is Git so popular?
+Ans. => 
 - It’s free and open-source.
 - GitHub, GitLab, and Bitbucket made it easy to use Git online.
 - Works fast and handles large projects very well.
@@ -20,7 +21,8 @@ Ans.=>
   However git has better branching and merging features , has larger community ,so those are less popular 
   compare to git.
 
-# Phases in Git
+#Phases in Git
+Ans . =>
     1. Untracked phase : where files are in local file system but not on git.
     2. Stage : Files which are ready to stage to ready to be tracked.
        cmd => git add <filename> or git add .
@@ -31,7 +33,7 @@ Ans.=>
     - After tracked even if your file delete you can restore it from git.
        cmd=> git restore <filename>
 
-# Git Basics commands and it's unstage
+#Git Basics commands and it's unstage
     - git init
         - Creates new Git repository in your project
         - adds a hinden .git folder to track your version history
@@ -48,28 +50,28 @@ Ans.=>
         - Message needs to be given
         - cmd => git commit -m "commit message"
 
-# What is repository management in Git ?
+#What is repository management in Git ?
 Ans. =>
     - Git repository management refers to how we create, organize, share, and maintain code using Git.
     - It includes things like:
         - Creating and deleting repositories
-        - Managing branches
+        - Creating ,Managing and deleting branches
         - Handling remote repositories (e.g., on GitHub)
 
-# What is clonning a Git Repository ?
+#What is clonning a Git Repository ?
 Ans. =>
     - Cloning means downloading a full copy of an existing Git repository to your local machine.
     - It includes the project files, commit history, and branches.
     - You can clone repo when you want contribute or work on someone else's project.
 
-# What is forking a Git Repository ?
+#What is forking a Git Repository ?
 Ans. =>
     - Forking is done on platforms like GitHub, not through the Git CLI.
     - It creates a copy of someone else’s repository under your own GitHub account.
     - You can freely make changes without affecting the original repo.
     - you can fork repo when you want to suggest changes via a pull request.
 
-# Difference between forking and clonning 
+#Difference between forking and clonning 
 Ans. =>
     Feature	                    Cloning	                                    Forking
 Where it’s done	    On your computer (using git clone)	On      GitHub/GitLab UI
@@ -77,7 +79,7 @@ Ownership	        You don’t own the repo	                    You get your own 
 Purpose	            To work on or contribute to a project	    To propose changes or experiment freely
 Connection	        Still connected to original repo	        Separate repo (can sync via pull request)
 
-# How is a Git repository made ?
+#How is a Git repository made ?
 Ans. =>
     - There two ways
     - Create a new local Git Repository
@@ -88,7 +90,7 @@ Ans. =>
         - First create repo in github then clone it into your system
         - cmd => git clone https://github.com/Rutuja51/User-Authentication-App
 
-# How connect repository by SSH Authentication ?
+#How connect repository by SSH Authentication ?
 Ans. =>
     - As per SSH Authentication you require key-pair login. Local system should have private key and github should have public key.
     - Steps
@@ -102,11 +104,11 @@ Ans. =>
     - cmd => Create new SSH key
     - cmd => Paste there public key 
     - Go to repo code 
-    - Go to SSH
+    - Go to folder where SSH key stored
     - git clone (ssh-link)
     - Now you can edit and push changes with git add,commit and push
 
-# How connect repository by PAT Authentication ?
+#How connect repository by PAT Authentication ?
 Ans. => 
     - As per PAT Authentication you require PAT at the time of git clonning.
     - Steps
@@ -120,9 +122,128 @@ Ans. =>
     - cmd => git push origin master.
     - Now you can edit and push changes with git add,commit and push
 
+#What is branching in Git ?
+Ans. => 
+    - Branching in Git means creating a separate line of development from the main code.
+    - It allows you to work on features, fixes, or experiments without affecting the main (main or master) branch.
+    - main / master is very initial or default branch in git.
+    - When the work is done, you can merge it back into the main branch.
 
+#Why branching in git is important ?
+Ans. =>
+    - Keep the main code clean and stable.
+    - Allows multiple people to work on different tasks at the same time.
+    - Helps manage feature development, bug fixes, and code reviews more effectively.
 
+    e.g.
+    git checkout -b feature-auth      # Create and switch to a new branch
+    # Make changes and commit
+    git add .
+    git commit -m "Added auth feature"
+    git checkout main                 # Switch back to main branch
+    git merge feature-auth            # Merge feature branch into main
+    git branch -d feature-auth        # Delete the feature branch after merging
 
-    - **Branching:** Creating branches (`git branch`), switching between branches (`git switch` / `git checkout`), and viewing commit history (`git log`)
+#What are common git branch commands ?
+Ans. =>
+    - To list all branches
+    - cmd => git branch
 
-- **Critical Thinking:** Explaining why branching strategies are important in collaborative development
+    - To create new branch
+    - cmd => git branch <branch_name>
+
+    - To switch to another branch
+    - cmd => git checkout <branch_name>
+    - cmd => git switch <branch_name>
+
+    - To Create and switch to a branch / To create branch from another branch
+    - cmd => git checkout -b <branch_name>
+    - cmd => git switch -b <branch_name>
+
+    - To merge another branch into current one
+    - cmd => git merge <other_branch_name>
+
+    - To delete branch
+    - cmd => git branch -d <branch_name>
+
+    - To delete branch forcefully
+    - cmd => git branch -D <branch_name>
+
+#Why branching strategies are important in collaborative development ?
+Ans. =>
+    - Branching strategies are important because they help teams organize their work, avoid conflicts, and deliver stable code, especially when multiple developers are working on the same project at the same time.
+    - Reasons are following :
+    - Avoid code conflicts
+        - Developers work on separate branches (features, fixes, etc.) instead of touching the main code.
+        - Reduces the risk of overwriting each other’s work.
+    - Parallel Developements :
+        - Teams can work on multiple features or bugs at the same time.
+        - Each developer or team gets their own branch, increasing productivity.
+    - Cleaner Codes :
+        - Only tested and reviewed code is merged into the main branch.
+        - Keeps the main branch stable and deployable at all times.
+    - Better collaoration :
+        - Makes it easier to track who worked on what and review code through pull/merge requests.
+    -Supports CI/CD
+        - Branches can trigger automated tests or builds.
+        - Ensures only high-quality code reaches production.
+
+#What is git log ?
+Ans. =>
+    - git log is a command to show commit history in git repository.
+    - It helps developers track changes, see who made them, and understand the project history.
+    - Each entry in git log shows log ID, auther name and email ,date and time to commit, commit message.
+
+    - To show log history in details
+    - cmd => git log
+
+    - To show commit history summary in one line
+    - cmd => git log --oneline 
+
+    - To show graphical representation
+    - cmd => git log --graph
+
+    - To show last 5 commits
+    - cmd => git log -n 5
+
+    - To show filter by auther
+    - cmd => git log --author="Rutuj"
+
+    - To show commits made after certain dates
+    - cmd => git log --since="2025-16-05"
+
+    - To show commits that chnaged specific files
+    - cmd => git <log filename.txt>
+
+    e.g. => git log --oneline --graph (shows clean one line commit history)
+    
+#What is role of DevOps Engineer in git ?
+Ans. => 
+    - DevOps Engineer collaborate efficiently, automate processes, and maintain code quality using Git and related tools.
+    
+    - Repository Management
+        - Set up and organize Git repositories for projects.
+        - Manage access control and permissions for different team members.
+
+    - Branching Strategy Implementation
+        - Define and enforce branching strategies (like Git Flow, GitHub Flow, etc.).
+        - Ensure smooth collaboration and reduce merge conflicts.
+    
+    - CI/CD Integration
+        - Connect Git with CI/CD pipelines (e.g., Jenkins, GitHub Actions).
+        - Automatically run tests, builds, and deployments when code is pushed.
+    
+    - Code Review & Pull Requests
+        - Help set up processes for pull requests, code reviews, and approval workflows.
+        - Ensure that only tested and approved code is merged into main branches.
+
+    - Monitoring & Automation
+        - Automate tasks like code formatting, security scans, and version tagging.
+        - Monitor Git activity to catch errors or issues early.
+
+    - Backup and Recovery
+        - Ensure that Git repos are backed up regularly and can be restored if needed.
+    
+    - Training & Support
+        - Help developers understand Git best practices.
+        - Assist with Git-related issues (e.g., resolving merge conflicts, recovering lost commits).
