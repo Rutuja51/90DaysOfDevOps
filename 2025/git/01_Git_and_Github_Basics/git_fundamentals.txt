@@ -1,0 +1,128 @@
+# Git Fundamentals
+
+# What is Git ?
+Ans => 
+- Git is a version control system (VCS).
+- It helps developers track changes in code, work together on projects, and manage versions of their      software.
+
+# Why is Git important?
+Ans.=>
+- It lets teams collaborate easily on the same code.
+- You can go back to older versions if something breaks.
+- It helps in avoiding code conflicts when many people are working on the same files.
+
+# Why is Git so popular?
+- It’s free and open-source.
+- GitHub, GitLab, and Bitbucket made it easy to use Git online.
+- Works fast and handles large projects very well.
+- Widely adopted in the software industry and used by most companies.
+- perhaps there are other tools like git such as Apache Subversion(SVN), Mercurial, Perforce. 
+  However git has better branching and merging features , has larger community ,so those are less popular 
+  compare to git.
+
+# Phases in Git
+    1. Untracked phase : where files are in local file system but not on git.
+    2. Stage : Files which are ready to stage to ready to be tracked.
+       cmd => git add <filename> or git add .
+       cmd => git rm --cache <filename>  (to returns files or unstage files)
+    3. Tracked(Commit) : You save your file or changes locally in git.Git records the snapshot, message,  author and time in commit history. If you want to share changes with other or place it on remote then
+       cmd => git commit -m "commit message"  (saving changes in git with auther and time details)
+       cmd=>git push origin dev (pushing changes remotely)
+    - After tracked even if your file delete you can restore it from git.
+       cmd=> git restore <filename>
+
+# Git Basics commands and it's unstage
+    - git init
+        - Creates new Git repository in your project
+        - adds a hinden .git folder to track your version history
+        - Initial stage of starting of project allows git to track further changes
+        - cmd => git init
+
+    - git add
+        - add files to staging area
+        - after you changes file before commit you should add those in staging.
+        - cmd => git add <filename> / git add .
+
+    - git commit
+        - Takes all stage changes and saving into Git
+        - Message needs to be given
+        - cmd => git commit -m "commit message"
+
+# What is repository management in Git ?
+Ans. =>
+    - Git repository management refers to how we create, organize, share, and maintain code using Git.
+    - It includes things like:
+        - Creating and deleting repositories
+        - Managing branches
+        - Handling remote repositories (e.g., on GitHub)
+
+# What is clonning a Git Repository ?
+Ans. =>
+    - Cloning means downloading a full copy of an existing Git repository to your local machine.
+    - It includes the project files, commit history, and branches.
+    - You can clone repo when you want contribute or work on someone else's project.
+
+# What is forking a Git Repository ?
+Ans. =>
+    - Forking is done on platforms like GitHub, not through the Git CLI.
+    - It creates a copy of someone else’s repository under your own GitHub account.
+    - You can freely make changes without affecting the original repo.
+    - you can fork repo when you want to suggest changes via a pull request.
+
+# Difference between forking and clonning 
+Ans. =>
+    Feature	                    Cloning	                                    Forking
+Where it’s done	    On your computer (using git clone)	On      GitHub/GitLab UI
+Ownership	        You don’t own the repo	                    You get your own copy on your GitHub
+Purpose	            To work on or contribute to a project	    To propose changes or experiment freely
+Connection	        Still connected to original repo	        Separate repo (can sync via pull request)
+
+# How is a Git repository made ?
+Ans. =>
+    - There two ways
+    - Create a new local Git Repository
+        cmd => mkdir my_project
+        cmd => cd my_project
+        cmd => git init
+    - Create on GitHub (gitLab)
+        - First create repo in github then clone it into your system
+        - cmd => git clone https://github.com/Rutuja51/User-Authentication-App
+
+# How connect repository by SSH Authentication ?
+Ans. =>
+    - As per SSH Authentication you require key-pair login. Local system should have private key and github should have public key.
+    - Steps
+    - Creating key-pair
+    - cmd => ssh-keygen
+    - cmd => cd .ssh
+    - cmd => copy public key by cmd => cat key.public
+    - cmd => Go to github
+    - cmd => Go to Settings
+    - cmd => SSH & CGP Keys
+    - cmd => Create new SSH key
+    - cmd => Paste there public key 
+    - Go to repo code 
+    - Go to SSH
+    - git clone (ssh-link)
+    - Now you can edit and push changes with git add,commit and push
+
+# How connect repository by PAT Authentication ?
+Ans. => 
+    - As per PAT Authentication you require PAT at the time of git clonning.
+    - Steps
+    - Create Personal Access Tocken in Github personal setting and copy it.
+    - Create new repo on GitHub
+    - Now go to git bash and select place you want to clone git repo.
+    - check is local directory is connected with git remotely or no by
+    - cmd => git remote -v
+    - cmd => git remote add origin <github_repo_link> 
+    - cmd => git remote set-url origin <https://<generated_token>@github.com/Rutuja51/demo-shell-scripts.git>   (here generated_token => sdhshduiwedxjwhfoiencjfeufwioe78237r83uhfje)
+    - cmd => git push origin master.
+    - Now you can edit and push changes with git add,commit and push
+
+
+
+
+    - **Branching:** Creating branches (`git branch`), switching between branches (`git switch` / `git checkout`), and viewing commit history (`git log`)
+
+- **Critical Thinking:** Explaining why branching strategies are important in collaborative development
