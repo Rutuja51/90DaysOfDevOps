@@ -5,6 +5,8 @@
     - Create app.py (python file in docker folder)
 ## 2. Write a Dockerfile:
 - Create a Dockerfile that defines how to build an image for your application.
+- Include comments in your Dockerfile explaining each instruction.
+
     - created docker file name as "Dockerflie".
     ```bash
     # Import base image OS you can get this from google python official
@@ -23,4 +25,7 @@
     CMD ["python","app.py"]
     ```
 
-- Include comments in your Dockerfile explaining each instruction.
+- Build your image using
+```bash
+    docker build -t app-python:latest .
+```
