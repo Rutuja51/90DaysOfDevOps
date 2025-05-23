@@ -1,4 +1,4 @@
-# Import base image OS you can get this from google python official
+# Import base image OS you can get this from google python official.
 FROM python:3.9-slim
     
 # Working directory where your code will get store in container
