@@ -29,3 +29,21 @@
 ```bash
     docker build -t app-python:latest .
 ```
+
+## 3. Verify your Build :
+- Run your container locally to ensure it works as expected:
+```bash
+    docker run -d -p 8080:80 -name <your-username>/sample-app:latest
+    # -d => run in detached mode or in background preocess
+    # -p => specifying ports
+    #  8080:80 => <host-port>:<container-port>
+    # -name => provides conatiner name
+```
+- Verify the container is running with:
+```bash
+    docker ps
+```
+- Check logs using
+```bash
+    docker logs <container_id>
+```
