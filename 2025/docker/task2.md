@@ -9,20 +9,57 @@
 
     - created docker file name as "Dockerflie".
     ```bash
-    # Import base image OS you can get this from google python official
+        # Base image (OS)
+
     FROM python:3.9-slim
-    # Working directory where your code will get store in container
+
+    # Working directory
+
     WORKDIR /app
-    #Copy source code to conatiner's working directoy
-    COPY app.py .
-    # here . means /app directory from container which current directory u can also do src/* app/
-    # Now given command for insatlling libraries and compling commands
-    RUN pip install
-    #Expose ports . Deafult pythong is runnign on port 8000
-    EXPOSE 80
-    # here
-    #Command to serve application
-    CMD ["python","app.py"]
+
+    # Copy src code to container
+
+    COPY . .
+
+    # Run the build commands
+
+    RUN pip install -r requirement.txt
+
+    # expose port 80
+
+    EXPOSE 8000
+
+    # serve the app / run the app (keep it running)
+
+    CMD ["python","run.py"]
+
+    ```
+    - Created app.py file where code is present
+
+    ```bash
+    from flask import Flask
+    app = Flask(__name__)
+
+    @app.route('/')
+    def main():
+        return "Hello Docker!"
+
+    ```
+    - Creted run.py file to hosting
+
+    ```bash
+
+    from app import app
+    app.run(debug=True, host='0.0.0.0', port=8000)
+
+    ```
+    - Create requirement.txt to install dependencies
+
+    ```bash
+    
+    flask==2.2.2
+W   erkzeug==2.2.2
+
     ```
 
 - Build your image using
