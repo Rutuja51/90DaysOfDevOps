@@ -1,0 +1,107 @@
+Docker Basics and Advance Concepts
+
+# Introduction and Purpose: Understand Docker’s role in modern development.
+- Docker is an open-source platform that enables developers to automate the deployment, scaling, and management of applications using containerization. Containers are lightweight, portable, and self-sufficient units that include everything needed to run a piece of software—code, runtime, system tools, libraries, and settings.
+- Purpose
+    - Consistency Across Environments
+    - Isolation and Resource Efficiency
+    - Rapid Development and Deployment
+    - Scalability and Portability
+    - Microservices Support
+- E.g.
+    - Scenario: A development team is building a full-stack e-commerce website using React (frontend), Node.js (backend), and MongoDB (database).
+    - Three containers React Docker, Node.js Docker, MongoDB db docker.
+    - Place this containers in docker-compose.yml
+    - run => docker compose up
+
+# Virtualization vs. Containerization: Learn the differences and benefits.
+- Virtualization : 	Uses a hypervisor (e.g., VMware, VirtualBox) to run multiple virtual machines (VMs) on a single physical server. Each VM has its own OS, along with apps and libraries.
+-Containerization : 	Uses a container engine (like Docker) to run multiple containers on the same OS kernel. Containers share the host OS but are isolated from each other and include only the app and its dependencies.
+
+    Feature                     Virtualization                              Containerization 
+
+System Overhead            Heavy – each VM includes full OS           Lightweight – shares host OS
+
+Startup Time               Minutes                                    Seconds
+
+Performance                Slower due to full OS per VM               Faster due to minimal abstraction
+
+Portability                Less portable – tied to VM image and       portable across environments
+                           hypervisorHighly 
+
+Isolation                  Stronger (full OS per instance)            Good (process-level isolation)
+
+Resource Usage             Higher (more RAM, CPU per VM)              Lower (containers use fewer 
+                                                                      resources
+
+- Use Virtualization:
+    - When you need strong isolation (e.g., running different OS types).
+    - For legacy systems that require full OS environments.
+
+- Use Containerization:
+    - For modern app development, microservices, and cloud-native solutions.
+    - When speed, resource efficiency, and portability are critical.
+
+# Build Kya Hota Hai: Understand the Docker build process.
+- In software development, a build is the process of converting source code into a working application. This may include compiling code, linking libraries, packaging assets, and preparing the application to run on a specific platform or environment.
+- simply moving your application or source code from development environment to production environment.
+- docker build is the command used to create a Docker image from a set of instructions defined in a     Dockerfile. This image acts like a blueprint for running containers.
+
+- Think of it like compiling code:
+    -You write source code → Compile it → Get a binary
+    -You write a Dockerfile → Build it → Get a Docker image
+
+# Docker Terminologies: Get familiar with key Docker terms.
+- Docker Images : A read-only template that contains the application code, runtime, libraries, and system 
+                  tools needed to run applications.
+- Docker Containers : A running instance of a Docker image.
+- Docker file : A text file that contains a set of instructions for building a Docker image.
+- Docker build : The process of creating a Docker image from a Dockerfile and its context.
+- Docker Hub : A public registry where Docker images are stored and shared.
+- Docker Engine : The core software that runs Docker. It includes:
+- Docker volume : A way to persist data in Docker containers, even after the container stops or deleted.
+- Docker Netwoek : Docker creates isolated networks for containers to communicate with each other.
+- Docker Compose : A tool for defining and running multi-container applications.
+- Docker Tag : A label used to identify a version of an image.
+
+# Docker Components: Explore Docker Engine, images, containers, and more.
+- Docker Engine : The core runtime that enables containers to run on a system with using docker daemon.
+    - Docker daemon :Runs in the background and manages images, containers, networks, and volumes.
+    - Docker CLI : The command-line interface (docker) used to interact with Docker
+                    e.g. docker run , docker build
+    - REST API: Enables programmatic interaction with the daemon.
+- Docker Image :  A read-only template used to create containers created from Dockerfile.
+    - It contains Apllication code, Libraries and dependencies, System tools(python:3.12)
+- Docker containers : A runtime instance of a Docker image which is isolated and lightweight ,shares the
+                      host OS kernel.
+                      - It can be started , stopped, restarted and deleted.
+- Dcoker File : A script containing step-by-step instructions to build a Docker image.
+    - Common commands:
+        -FROM: base image
+        -RUN: execute commands
+        -COPY: copy files
+        -CMD or ENTRYPOINT: default container command
+-Docker Compose : A tool for buiding and running multi-container applications by using yml file.
+    - yml file is a configuration file to configure services, volumes and networks.
+-Docker Network : nables communication between containers.
+    - Types:
+        -bridge (default)
+        -host
+        -none
+        -overlay (for multi-host)
+        -user define bridge
+
+# Docker Scout: Analyze your images for vulnerabilities and insights.
+- Docker Scout is a tool from Docker that provides deep image insights and security analysis to help you build and run secure, trustworthy containers.
+    -Detect vulnerabilities in your Docker images
+    -Monitor dependencies and packages
+    -Evaluate supply chain risks
+    -Get policy guidance for using or publishing containers
+    
+Project Building Using Docker: Containerize a sample project.
+Multi-stage Docker Builds / Distroless Images: Optimize your images.
+Docker Hub (Push/Tag/Pull): Manage and distribute your Docker images.
+Docker Volumes: Persist data across container runs.
+Docker Networking: Connect containers using networks.
+Docker Compose: Orchestrate multi-container applications.
+
